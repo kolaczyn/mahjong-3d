@@ -18,12 +18,15 @@ const fourTimes = <T extends Tile>(tile: T[]): T[] =>
     .fill(tile)
     .flatMap((x) => x);
 
-const manTiles: Man[] = fromOneToNine("Man");
-const pinTiles: Pin[] = fromOneToNine("Pin");
-const souTiles: Sou[] = fromOneToNine("Sou");
+const makeNumberedTiles = <T extends Tile>(prefix: NumberedTilesType): T[] =>
+  fourTimes(fromOneToNine(prefix));
 
-const winds: Wind[] = fourTimes(["East", "South", "West", "North"]);
-const dragons: HonorTile[] = fourTimes(["Green", "Red", "White"]);
+export const manTiles: Man[] = makeNumberedTiles("Man");
+export const pinTiles: Pin[] = makeNumberedTiles("Pin");
+export const souTiles: Sou[] = makeNumberedTiles("Sou");
+
+export const winds: Wind[] = fourTimes(["East", "South", "West", "North"]);
+export const dragons: HonorTile[] = fourTimes(["Green", "Red", "White"]);
 
 export const allTiles: Tile[] = [
   ...manTiles,

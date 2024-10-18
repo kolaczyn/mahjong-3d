@@ -1,20 +1,10 @@
-import { Image, StyleSheet, Text } from "react-native";
-import {
-  Dragon,
-  DRAGONS,
-  NumberedTile,
-  Tile,
-  Wind,
-  WINDS,
-  ImageName,
-} from "@/types";
+import { StyleSheet, Image, ImageRequireSource } from "react-native";
+import { Tile } from "@/types";
+import { assets } from "@/consts/allAssets";
+import React from "react";
 
-const getImageName = (tile: Tile): ImageName => {
-  if (DRAGONS.some((x) => x === tile)) return `Dragons/${tile as Dragon}`;
-  if (WINDS.some((x) => x === tile)) {
-    return `Winds/${tile as Wind}`;
-  }
-  return `${tile as NumberedTile}`;
+const getImageName = (tile: Tile): ImageRequireSource => {
+  return assets[tile] ?? assets["Green"];
 };
 
 type Props = {
@@ -22,15 +12,7 @@ type Props = {
 };
 
 export const MahjongTile = ({ tile }: Props) => {
-  // const source = `@/assets/images/tiles/Man2.png`;
-  const source = `@/assets/images/tiles/${getImageName(tile)}.png`;
-  return (
-    <Image
-      // source={require(`@/assets/images/tiles/${getImageName(tile)}.png`)}
-      source={require(source)}
-      style={styles.tile}
-    />
-  );
+  return <Image source={getImageName(tile)} style={styles.tile} />;
 };
 
 const styles = StyleSheet.create({

@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   stepContainer: {
+    backgroundColor: "white",
     gap: 8,
     marginBottom: 8,
   },

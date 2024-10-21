@@ -1,6 +1,6 @@
 import { StyleSheet, Image, ImageRequireSource } from "react-native";
 import { Tile } from "@/types";
-import { assets } from "@/consts/allAssets";
+import { assets } from "@/constants/all-assets";
 import React from "react";
 
 const getImageName = (tile: Tile): ImageRequireSource => {
